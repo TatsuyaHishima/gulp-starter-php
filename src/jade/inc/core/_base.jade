@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    block title
+    block meta
+      meta(name='description', content='description')
+      meta(name='keywords', content='keywords')
+      meta(name='viewport', content='width=device-width')
+      meta(property="og:title", content="")
+      meta(property="og:type", content="")
+      meta(property="og:description", content="")
+      meta(property="og:url", content="")
+      meta(property="og:image", content="")
+      meta(property="og:site_name", content="")
+      meta(property="og:email", content="")
+      meta(property="og:phone_number", content="")
+      meta(property="og:latitude", content="")
+      meta(property="og:longitude", content="")
+    block link
+      link(rel='shortcut icon', href='img/favicon.ico')
+      //- link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+      link(rel='stylesheet', href='css/app.css')
+    block script
+      // if lt IE 9
+        script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
+        script(src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js")
+
+  body
+    block body
+    block scriptFooter
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+      script(src="js/all.min.js")
+      //- script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
