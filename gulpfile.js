@@ -10,6 +10,7 @@ var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var plumber     = require('gulp-plumber');
 var browserSync = require('browser-sync');
+var shell       = require('gulp-shell');
 var sass        = require('gulp-ruby-sass');
 var pleeease    = require('gulp-pleeease');
 
@@ -34,14 +35,20 @@ var paths = {
  * browser-sync
 ------------------------------------------------------------------------------*/
 
-gulp.task('server', function() {
-    browserSync({
-        server: {
-            baseDir: paths.distDir
-        }
-    });
-});
+var php_server = {
+    "port": 8556,
+    "path": "dist"
+};
 
+gulp.task('server', ['boot'], function() {
+    browserSync({
+            proxy: '127.0.0.1:' + php_server.port,
+            port: 3055,
+            open: true,
+            notify: false,
+            livereload: true
+        });
+});
 
 /*------------------------------------------------------------------------------
  * [Task] Jade
@@ -65,6 +72,17 @@ gulp.task('jade', function() {
 gulp.task('php', function() {
     return gulp.src(paths.srcJade + '/php/**/*.php')
         .pipe(gulp.dest(paths.distDir + '/php'));
+});
+
+// Launch built-in server
+gulp.task('boot', function() {
+    return gulp.src('')
+        .pipe(plumber())
+        .pipe(
+            shell('php -S 127.0.0.1:' + php_server.port + ' -t ' + php_server.path + '&', 
+                {ignoreErrors: true}
+            )
+        );
 });
 
 /*------------------------------------------------------------------------------
