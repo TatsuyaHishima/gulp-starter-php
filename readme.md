@@ -7,23 +7,26 @@
 - live reload
 
 ## Preparation
-See <https://github.com/TatsuyaHishima/gulp-starter>
+See <https://github.com/TatsuyaHishima/gulp-starter>  
 This needs PHP version over 5.4.0
 
 ## RSS
 If you can get RSS feed, add below in /src/jade/php/RSS.php line 5
+
+```
 $url = "http://yoursite/feed";
+```
 
 To view RSS feed, I'm using [rss-php](https://github.com/dg/rss-php, "rss-php").
 
 ## Usage
-Firstly, to install module
+Firstly, type below to install module
 
 ```
 npm install
 ```
 
-Then, to launch PHP built-in server
+Then, type below to launch PHP built-in server
 
 ```
 gulp boot
